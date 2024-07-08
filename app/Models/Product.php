@@ -9,7 +9,6 @@ class Product extends Model
 {
     use HasFactory;
 
-<<<<<<< HEAD
     protected $fillable = [
         'product_name',
         'product_price',
@@ -17,6 +16,7 @@ class Product extends Model
         'type',
         'product_details',
         'stock',
+        'image', // tambahkan 'image' jika Anda menyimpan nama file gambar di database
     ];
 
     public function reviews()
@@ -28,11 +28,4 @@ class Product extends Model
     {
         return $this->hasMany(Cart::class);
     }
-=======
-    protected $fillable =[
-        'nama_produk',
-        'harga_produk',
-        'merek_produk',
-    ];
->>>>>>> 3ae3ea46afd902cec278f47aaed3cf6d625e40de
 }
