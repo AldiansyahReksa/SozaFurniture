@@ -16,7 +16,7 @@ class Product extends Model
         'type',
         'product_details',
         'stock',
-        'image', // tambahkan 'image' jika Anda menyimpan nama file gambar di database
+        'image',
     ];
 
     public function reviews()

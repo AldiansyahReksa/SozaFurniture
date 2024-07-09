@@ -9,7 +9,7 @@ use App\Http\Controllers\PembayaranController;
 
 Route::get('/', [HalamanUtamaController::class, 'index']);
 Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
-Route::get('/produk/{id}', [ProdukController::class, 'detail'])->name('product.detail');
+Route::get('/produk/{id}', [ProdukController::class, 'detail'])->name('produk.detail');
 Route::get('/ulasan', [UlasanController::class, 'index']);
 Route::get('/troli', [TroliController::class, 'index']);
 Route::get('/pembayaran', [PembayaranController::class, 'index']);

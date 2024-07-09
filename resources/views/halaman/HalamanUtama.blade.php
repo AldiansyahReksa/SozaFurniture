@@ -15,7 +15,7 @@
         <p><strong>Temukan Kami</strong> di media sosial atau hubungi kami untuk informasi lebih lanjut.</p>
     </div>
     <div class="hero-image">
-        <img src="{{ asset('images/karpet1.jpg') }}" alt="Karpet Berkualitas">
+        <img src="{{ asset('images/karpet.jpg') }}" alt="Karpet Berkualitas">
     </div>
 </div>
 @endsection
