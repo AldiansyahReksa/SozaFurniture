@@ -57,7 +57,7 @@
 
     function checkout() {
         // Logika checkout
-        alert('Check out berhasil!');
+        window.location.href = "{{ url('/pembayaran') }}";
     }
 </script>
 @endsection
