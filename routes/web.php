@@ -17,3 +17,4 @@ Route::put('/troli/{id}', [TroliController::class, 'update'])->name('troli.updat
 Route::delete('/troli/{id}', [TroliController::class, 'destroy'])->name('troli.destroy');
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
 
+

@@ -6,8 +6,10 @@
 <div class="hero-section">
     <h1>Temukan Produk Terbaik Kami</h1>
     <div class="search-container">
-        <input type="text" placeholder="Cari produk...">
-        <button>Cari</button>
+        <form action="{{ route('produk.index') }}" method="GET">
+            <input type="text" name="query" placeholder="Cari produk...">
+            <button type="submit">Cari</button>
+        </form>
     </div>
 </div>
 
