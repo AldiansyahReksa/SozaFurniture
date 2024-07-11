@@ -11,10 +11,9 @@ Route::get('/', [HalamanUtamaController::class, 'index']);
 Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
 Route::get('/produk/{id}', [ProdukController::class, 'detail'])->name('produk.detail');
 Route::get('/ulasan', [UlasanController::class, 'index']);
-Route::get('/troli', [TroliController::class, 'index']);
 Route::get('/troli', [TroliController::class, 'index'])->name('troli.index');
 Route::put('/troli/{id}', [TroliController::class, 'update'])->name('troli.update');
 Route::delete('/troli/{id}', [TroliController::class, 'destroy'])->name('troli.destroy');
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
-
-
+Route::post('/pembayaran', [PembayaranController::class, 'store'])->name('pembayaran.store');
+Route::get('/form-pembayaran', [PembayaranController::class, 'form'])->name('pembayaran.form');
