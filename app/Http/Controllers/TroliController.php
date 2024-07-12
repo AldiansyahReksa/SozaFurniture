@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Product; // Sesuaikan dengan namespace yang benar jika diperlukan
+use App\Models\Cart;
 
 
 use Illuminate\Http\Request;
@@ -11,9 +12,9 @@ class TroliController extends Controller
     public function index()
     {
         // Misalnya, mengambil semua produk dari model Product
-        $produk = Product::all();
+        $carts = Cart::all();
     
-        return view('troli.troli', ['produk' => $produk]);
+        return view('troli.troli', ['carts' => $carts]);
     }
     
 
@@ -31,12 +32,25 @@ class TroliController extends Controller
         return redirect()->route('troli.update');
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
-        // Lakukan logika untuk menghapus produk dari troli
-        // Contoh: Simpan ke database atau sesuai kebutuhan aplikasi Anda
+        $cart = Cart::find($id);
+        if ($cart) {
+            $cart->delete();
+            return response()->json(['success' => true]);
+        } else {
+            return response()->json(['success' => false]);
+        }
+    }
 
-        // Redirect kembali ke halaman troli
-        return redirect()->route('troli.destroy');
+    public function tambahKeTroli(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+        $cart = new Cart();
+        $cart->product_id = $product->id;
+        $cart->qty = 1; // Atau sesuaikan dengan nilai yang diinginkan
+        $cart->save();
+
+        return redirect()->back()->with('success', 'Produk berhasil ditambahkan ke troli.');
     }
 }

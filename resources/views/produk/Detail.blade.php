@@ -11,9 +11,10 @@
         <p>Tipe: {{ $product->type }}</p>
         <p>Detail Barang: {{ $product->product_details }}</p>
         <p>Stok: {{ $product->stock }}</p>
-        <a href="{{ url('/troli/tambah/' . $product->id) }}">
-            <button>Tambah Ke Troli</button>
-        </a>
+        <form action="{{ route('troli.tambah', $product->id) }}" method="POST">
+            @csrf
+            <button type="submit">Tambah Ke Troli</button>
+        </form>
         <a href="{{ url('/pembayaran') }}">
             <button>Beli Sekarang</button>
         </a>

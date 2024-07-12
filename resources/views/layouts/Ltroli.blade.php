@@ -131,6 +131,51 @@
                 display: none;
             }
         }
+
+        .troli-container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .troli-container h1, .troli-container h2 {
+        text-align: center;
+    }
+
+    .troli-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    .troli-table th, .troli-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+
+    .troli-table th {
+        background-color: #f2f2f2;
+    }
+
+    .qty-input {
+        width: 50px; /* Adjust the width as needed */
+        text-align: center;
+    }
+
+    .total-column {
+        width: 20%; /* Set the fixed width for the total column */
+        text-align: right; /* Align text to the right */
+    }
+
+    .action-column {
+        width: 80px; /* Adjust the width as needed */
+        text-align: center;
+    }
+
     </style>
 </head>
 <body>
