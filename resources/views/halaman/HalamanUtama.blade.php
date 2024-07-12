@@ -10,7 +10,7 @@
         <a href="{{ url('/produk') }}" class="cta-button">Jelajahi Sekarang</a>
         <div class="social-icons">
             <a href="#" title="WhatsApp"><img src="{{ asset('images/whatsapp.png') }}" alt="WhatsApp"></a>
-            <a href="#" title="Instagram"><img src="{{ asset('images/instagram.png') }}" alt="Instagram"></a>
+            <a href="https://instagram.com/soza_furniture_" title="Instagram"><img src="{{ asset('images/instagram.png') }}" alt="Instagram"></a>
         </div>
         <p><strong>Temukan Kami</strong> di media sosial atau hubungi kami untuk informasi lebih lanjut.</p>
     </div>

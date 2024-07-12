@@ -67,8 +67,7 @@
     }
 
     function checkout() {
-        // Logika checkout
-        window.location.href = "{{ url('/pembayaran') }}";
+        window.location.href = "{{ route('pembayaran.form') }}";
     }
 
     document.querySelectorAll('.qty-input').forEach(input => {

@@ -16,26 +16,26 @@
             </tr>
         </thead>
         <tbody>
-        @php
-            $grandTotal = 0;
-        @endphp
-        @foreach ($products as $cart)
-        @php
-            $total = $cart->product->product_price * $cart->qty;
-            $grandTotal += $total;
-        @endphp
-            <tr>
-                <td>{{ $cart->product->product_name }}</td>
-                <td>
-                    Brand : {{ $cart->product->brand }}
-                    Tipe: {{ $cart->product->type}}
-                    {{ $cart->product->product_details }}
-                </td>
-                <td>{{ $cart->product->product_price }}</td>
-                <td>{{ $cart->qty }}</td>
-                <td>{{ $total }}</td>
-            </tr>
-        @endforeach
+            @php
+                $grandTotal = 0;
+            @endphp
+            @foreach ($products as $cart)
+            @php
+                $total = $cart->product->product_price * $cart->qty;
+                $grandTotal += $total;
+            @endphp
+                <tr>
+                    <td>{{ $cart->product->product_name }}</td>
+                    <td>
+                        Brand : {{ $cart->product->brand }}
+                        Tipe: {{ $cart->product->type }}
+                        {{ $cart->product->product_details }}
+                    </td>
+                    <td>{{ $cart->product->product_price }}</td>
+                    <td>{{ $cart->qty }}</td>
+                    <td>{{ $total }}</td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
     <div class="total-container">
@@ -50,5 +50,4 @@
     </div>
     <button class="back-button" onclick="window.location.href='{{ url('/') }}'">Kembali</button>
 </div>
-
 @endsection

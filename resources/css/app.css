@@ -1,0 +1,51 @@
+.alamat-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.alamat-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.back-button,
+.next-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #8B4513;
+    /* Adjust color as needed */
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.back-button:hover,
+.next-button:hover {
+    background-color: #A0522D;
+    /* Adjust color as needed */
+}
