@@ -13,10 +13,18 @@ class PembayaranController extends Controller
         return view('pembayaran.pembayaran', ['products' => $products]);
     }
 
+    public function indexKonfirmasi(Request $request)
+    {
+        $products = Cart::all();
+        $method = $request->input('method');
+        return view('pembayaran.konfirmasiPembayaran', compact('products', 'method'));
+    }
+
     public function store(Request $request)
     {
         // Handle form submission
         $validated = $request->validate([
+            'nama' => 'required',
             'whatsapp' => 'required',
             'email' => 'required|email',
             'alamat' => 'required',

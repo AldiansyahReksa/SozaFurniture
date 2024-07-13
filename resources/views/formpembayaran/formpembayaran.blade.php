@@ -8,6 +8,10 @@
     <form action="{{ route('pembayaran.store') }}" method="POST">
         @csrf
         <div class="form-group">
+            <label for="nama">Nama</label>
+            <input type="text" id="nama" name="nama" required>
+        </div>
+        <div class="form-group">
             <label for="whatsapp">Whatsapp</label>
             <input type="text" id="whatsapp" name="whatsapp" required>
         </div>

@@ -115,10 +115,10 @@
     </div>
     <h2>Metode Pembayaran</h2>
     <div class="payment-methods">
-        <button class="payment-button">BCA</button>
-        <button class="payment-button">BRI</button>
-        <button class="payment-button">Mandiri</button>
-        <button class="payment-button">Cash On Delivery (COD)</button>
+        <a href="{{ route('pembayaran.konfirmasi', ['method' => 'BCA']) }}" class="payment-button">BCA</a>
+        <a href="{{ route('pembayaran.konfirmasi', ['method' => 'BRI']) }}" class="payment-button">BRI</a>
+        <a href="{{ route('pembayaran.konfirmasi', ['method' => 'Mandiri']) }}" class="payment-button">Mandiri</a>
+        <a href="{{ route('pembayaran.konfirmasi', ['method' => 'COD']) }}" class="payment-button">Cash On Delivery (COD)</a>
     </div>
     <button class="back-button" onclick="window.location.href='{{ url('/') }}'">Kembali</button>
 </div>
