@@ -22,6 +22,7 @@
         max-width: 1200px;
         margin: 2em auto;
         padding: 0 2em;
+        margin-bottom: 15%;
     }
 
     .hero-section {

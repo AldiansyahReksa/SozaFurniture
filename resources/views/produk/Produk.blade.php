@@ -4,14 +4,20 @@
 
 @section('content')
 <style>
+    :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #ecf0f1;
+            --accent-color: #e74c3c;
+            --text-color: #34495e;
+        }
     .hero-section {
         text-align: center;
         margin-top: 20px;
-        padding: 20px;
+        padding: 70px;
     }
 
     .search-container {
-        margin-top: 20px;
+        margin-top: 50px;
     }
 
     .search-container input[type="text"] {
@@ -23,7 +29,7 @@
 
     .search-container button {
         padding: 10px 20px;
-        background-color: #007bff;
+        background-color:var(--primary-color);
         color: white;
         border: none;
         border-radius: 5px;
@@ -32,7 +38,7 @@
     }
 
     .search-container button:hover {
-        background-color: #0056b3;
+        background-color: var(--accent-color);
     }
 
     .product-grid {
@@ -40,6 +46,7 @@
         grid-template-columns: 1fr;
         gap: 20px;
         padding: 20px;
+        margin-bottom : -11%;
     }
 
     .product-card {

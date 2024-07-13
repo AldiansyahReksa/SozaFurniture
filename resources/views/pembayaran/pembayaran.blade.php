@@ -3,6 +3,9 @@
 @section('title', 'Surya Murah - Karpet Berkualitas')
 
 @section('content')
+<head>
+    {{-- <link rel="stylesheet" href="{{ asset('css/toast.css') }}"> --}}
+</head>
 <style>
     .pembayaran-container {
         width: 90%;
@@ -12,12 +15,14 @@
         background-color: #f5f5f5;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 15%;
+        margin-top: 5%;
     }
 
-        .pembayaran-container h1,
-        .pembayaran-container h2 {
-            text-align: center;
-        }
+    .pembayaran-container h1,
+    .pembayaran-container h2 {
+        text-align: center;
+    }
 
     .pembayaran-table {
         width: 100%;
@@ -25,110 +30,77 @@
         margin-bottom: 20px;
         overflow-x: auto;
     }
-        .pembayaran-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
 
-        .pembayaran-table th,
-        .pembayaran-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
+    .pembayaran-table th,
+    .pembayaran-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
 
-        .pembayaran-table th {
-            background-color: #f2f2f2;
-        }
+    .pembayaran-table th {
+        background-color: #f2f2f2;
+    }
 
-        .total-container {
-            text-align: right;
-            margin-bottom: 20px;
-        }
+    .total-container {
+        text-align: right;
+        margin-bottom: 20px;
+    }
 
-        .payment-methods {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .payment-button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px 30px;
-            border-radius: 50px;
-            background-color: #e0e0e0;
-            box-shadow: 9px 9px 16px #bebebe, -9px -9px 16px #ffffff;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
     .payment-methods {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
+        gap: 20px;
         margin-bottom: 20px;
     }
 
     .payment-button {
-        padding: 10px 20px;
-        background-color: #007bff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-decoration: none;
+        width: 150px;
+        height: 100px;
+    }
+
+    .payment-button img {
+        max-width: 100%;
+        max-height: 70px;
+    }
+
+    .payment-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-button {
+        display: block;
+        width: 7%;
+        padding: 10px;
+        background-color: var(--primary-color);
         color: white;
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        transition: background-color 0.3s ease;
         text-align: center;
-        width: 100%;
-        max-width: 200px;
+        transition: background-color 0.3s ease;
+        margin-bottom: 20px;
     }
-        .payment-button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px 30px;
-            border-radius: 50px;
-            background-color: #e0e0e0;
-            box-shadow: 9px 9px 16px #bebebe, -9px -9px 16px #ffffff;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .payment-button:hover {
-            box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
-        }
-
-        .payment-button img {
-            width: 70px;
-            height: auto;
-        }
-
-        .back-button {
-            display: block;
-            width: 5%;
-            padding: 10px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;\
-            
-            cursor: pointer;
-            text-align: center;
-            transition: background-color 0.3s ease;
-        }
 
     .back-button:hover {
         background-color: #e63946;
     }
 </style>
+
 <div class="pembayaran-container">
+    <button class="back-button" onclick="window.location.href='{{ url('/') }}'">Kembali</button>
     <h1>Pembayaran</h1>
     <table class="pembayaran-table">
         <thead>
@@ -168,11 +140,18 @@
     </div>
     <h2>Metode Pembayaran</h2>
     <div class="payment-methods">
-        <a href="{{ route('pembayaran.konfirmasi', ['method' => 'BCA']) }}" class="payment-button">BCA</a>
-        <a href="{{ route('pembayaran.konfirmasi', ['method' => 'BRI']) }}" class="payment-button">BRI</a>
-        <a href="{{ route('pembayaran.konfirmasi', ['method' => 'Mandiri']) }}" class="payment-button">Mandiri</a>
-        <a href="{{ route('pembayaran.konfirmasi', ['method' => 'COD']) }}" class="payment-button">Cash On Delivery (COD)</a>
+        <a href="{{ route('pembayaran.konfirmasi', ['method' => 'BCA']) }}" class="payment-button">
+            <img src="{{ asset('images/BCA.png') }}" alt="BCA">
+        </a>
+        <a href="{{ route('pembayaran.konfirmasi', ['method' => 'BRI']) }}" class="payment-button">
+            <img src="{{ asset('images/BRI.png') }}" alt="BRI">
+        </a>
+        <a href="{{ route('pembayaran.konfirmasi', ['method' => 'Mandiri']) }}" class="payment-button">
+            <img src="{{ asset('images/Mandiri.png') }}" alt="Mandiri">
+        </a>
+        <a href="{{ route('pembayaran.konfirmasi', ['method' => 'COD']) }}" class="payment-button">
+            <img src="{{ asset('images/COD.png') }}" alt="COD">
+        </a>
     </div>
-    <button class="back-button" onclick="window.location.href='{{ url('/') }}'">Kembali</button>
 </div>
 @endsection
