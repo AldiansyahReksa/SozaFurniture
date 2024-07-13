@@ -4,8 +4,9 @@
 
 @section('content')
 <style>
-     .pembayaran-container {
-        width: 80%;
+    .pembayaran-container {
+        width: 90%;
+        max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
         background-color: #f5f5f5;
@@ -21,6 +22,7 @@
         width: 100%;
         border-collapse: collapse;
         margin-bottom: 20px;
+        overflow-x: auto;
     }
 
     .pembayaran-table th, .pembayaran-table td {
@@ -40,7 +42,9 @@
 
     .payment-methods {
         display: flex;
-        justify-content: space-around;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
         margin-bottom: 20px;
     }
 
@@ -52,6 +56,9 @@
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s ease;
+        text-align: center;
+        width: 100%;
+        max-width: 200px;
     }
 
     .payment-button:hover {
@@ -73,6 +80,22 @@
 
     .back-button:hover {
         background-color: #e63946;
+    }
+
+    @media (min-width: 768px) {
+        .payment-methods {
+            justify-content: space-around;
+        }
+
+        .payment-button {
+            width: auto;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .pembayaran-container {
+            width: 80%;
+        }
     }
 </style>
 <div class="pembayaran-container">

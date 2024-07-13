@@ -48,8 +48,6 @@
     }
 
     .product-info h3 {
-        /* margin: 0 0 0.5em 0;
-         */
         margin-bottom: 5%;
         font-size: 1.2em;
         color: var(--primary-color);
@@ -58,15 +56,14 @@
     /* New Styles for Product Detail */
     .product-detail {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         gap: 2em;
-        padding-bottom: 16%;
-        /* margin-top:7%; */
-        padding-top: 7%;
+        padding: 7% 2%;
     }
 
     .product-image {
         flex: 1;
+        max-width: 100%;
     }
 
     .product-image img {
@@ -107,6 +104,12 @@
 
     .product-info button:hover {
         background-color: var(--accent-color);
+    }
+
+    @media (min-width: 768px) {
+        .product-detail {
+            flex-direction: row;
+        }
     }
 </style>
 

@@ -5,71 +5,88 @@
 @section('content')
 <style>
     .hero-section {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 5%;
+        gap: 2em;
+        text-align: center;
+    }
+    
+    .hero-content {
+        flex: 1;
+    }
+    
+    .hero-image {
+        flex: 1;
+        width: 100%;
+    }
+    
+    .hero-image img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    h1 {
+        font-size: 2em;
+        margin-bottom: 0.5em;
+        color: var(--primary-color);
+    }
+    
+    p {
+        font-size: 1em;
+        line-height: 1.6;
+        margin-bottom: 1.5em;
+    }
+    
+    .cta-button {
+        display: inline-block;
+        padding: 1em 2em;
+        background-color: var(--accent-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+    }
+    
+    .cta-button:hover {
+        background-color: #c0392b;
+    }
+    
+    .social-icons {
+        display: flex;
+        gap: 1em;
+        justify-content: center;
+        margin-top: 2em;
+    }
+    
+    .social-icons img {
+        width: 30px;
+        height: 30px;
+        transition: transform 0.3s ease;
+    }
+    
+    .social-icons img:hover {
+        transform: scale(1.1);
+    }
+    
+    @media (min-width: 768px) {
+        .hero-section {
+            flex-direction: row;
+            text-align: left;
             padding-top: 5%;
-            /* padding-bottom: 10%; */
-            /* margin-bottom: 4em; */
-            /* margin-top: 70em; */
-        }
-        
-        .hero-content {
-            flex: 1;
-        }
-        
-        .hero-image {
-            flex: 1;
-        }
-        
-        .hero-image img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
         h1 {
             font-size: 2.5em;
-            margin-bottom: 0.5em;
-            color: var(--primary-color);
         }
         
         p {
             font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 1.5em;
         }
-        
-        .cta-button {
-            display: inline-block;
-            padding: 1em 2em;
-            background-color: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-        
-        .cta-button:hover {
-            background-color: #c0392b;
-        }
-    .social-icons {
-            display: flex;
-            gap: 1em;
-            margin-top: 2em;
-        }
-        
-        .social-icons img {
-            width: 30px;
-            height: 30px;
-            transition: transform 0.3s ease;
-        }
-        
-        .social-icons img:hover {
-            transform: scale(1.1);
-        }
+    }
 </style>
 <div class="hero-section">
     <div class="hero-content">
