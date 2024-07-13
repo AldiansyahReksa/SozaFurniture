@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Soza Furniture')</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -20,49 +21,6 @@
             color: var(--primary-color);
         }
         
-        .navbar {
-            background-color: var(--primary-color);
-            padding: 1em;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .navbar-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .logo {
-            height: 40px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo img {
-            height: 100%;
-            margin-right: 1em;
-        }
-        
-        .nav-links {
-            display: flex;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            margin-left: 2em;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
         
         .container {
             max-width: 1200px;
@@ -70,14 +28,9 @@
             padding: 0 2em;
         }
         
-        .footer {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            text-align: center;
-            padding: 2em 0;
-            margin-top: 4em;
-        }
         
+<<<<<<< HEAD
+=======
         /* Media Query for Responsive Navbar */
         @media (max-width: 768px) {
             .nav-links {
@@ -176,35 +129,31 @@
         text-align: center;
     }
 
+    .delete-btn {
+        background: none;
+        border: none;
+        color: red;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .delete-btn:hover {
+        color: darkred;
+    }
+
+>>>>>>> 0f30916405829a96aeb6bb33257f1f6efa3ad3f2
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-content">
-            <div class="logo">
-                <img src="{{ asset('images/logoSozaFurniture.png') }}" alt="Logo Soza Furniture">
-            </div>
-            <div class="menu-icon" onclick="toggleMenu()">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div class="nav-links" id="navLinks">
-                <a href="{{ url('/') }}">Beranda</a>
-                <a href="{{ url('/ulasan') }}">Ulasan</a>
-                <a href="{{ route('produk.index') }}">Produk</a>
-                <a href="{{ route('troli.index') }}">Troli</a>
-            </div>
-        </div>
-    </nav>
+    @include('layouts.Lnavbar')
+
+
     
     <div class="container">
         @yield('content')
     </div>
-    
-    <footer class="footer">
-        <p>&copy; 2024 Soza Furniture. All rights reserved.</p>
-    </footer>
+
+    @include('layouts.Lfooter')
     
     <script>
         function toggleMenu() {

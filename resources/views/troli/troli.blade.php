@@ -3,6 +3,108 @@
 @section('title', 'Troli')
 
 @section('content')
+<style>
+    :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #ecf0f1;
+        --accent-color: #e74c3c;
+        --text-color: #34495e;
+    }
+
+    .troli-container {
+        max-width: 1200px;
+        margin: 2em auto;
+        padding: 2em;
+        background-color: var(--secondary-color);
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        font-size: 2em;
+        color: var(--primary-color);
+        margin-bottom: 1em;
+        text-align: center;
+    }
+
+    .troli-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 2em;
+    }
+
+    .troli-table th, .troli-table td {
+        padding: 1em;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .troli-table th {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+
+    .troli-table td {
+        vertical-align: middle;
+    }
+
+    .troli-table img {
+        border-radius: 5px;
+        max-width: 100px;
+        height: auto;
+    }
+
+    .troli-table input[type="number"] {
+        width: 60px;
+        padding: 0.5em;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .icon-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5em;
+        transition: color 0.3s ease;
+    }
+
+    .icon-button.update-icon {
+        color: var(--secondary-color);
+    }
+
+    .icon-button.update-icon:hover {
+        color: #2980b9;
+    }
+
+    .icon-button.delete-icon {
+        color: var(--secondary-color);
+    }
+
+    .icon-button.delete-icon:hover {
+        color: #c0392b;
+    }
+
+    .troli-container button {
+        background-color: var(--primary-color);
+        color: #fff;
+        border: none;
+        padding: 1em 2em;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-right: 1em;
+    }
+
+    .troli-container button:hover {
+        background-color: #34495e;
+    }
+</style>
+
+<!-- Include FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 <div class="troli-container">
     <h1>Shopping Cart</h1>
         <table class="troli-table">
@@ -38,7 +140,9 @@
                         <span class="total">{{ $total }}</span>
                     </td>
                     <td class="action-column">
-                        <button class="delete-btn">Hapus</button>
+                        <button class="delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </td>
                 </tr>
             @endforeach
@@ -51,9 +155,6 @@
             </tr>
         </tbody>
     </table>
-    <a href="">
-        <button>Checkout</button>
-    </a>
     <button onclick="window.location.href='{{ url('/') }}'">Kembali</button>
     <button onclick="checkout()">Check out</button>
 </div>
@@ -109,5 +210,36 @@
         });
         document.getElementById('grandTotal').textContent = grandTotal.toFixed(2);
     }
+
+    document.getElementById('checkout-button').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const cartItems = [];
+        document.querySelectorAll('.qty-input').forEach(input => {
+            const id = input.closest('tr').dataset.id;
+            const qty = parseInt(input.value);
+
+            cartItems.push({ id: id, qty: qty });
+        });
+
+        fetch('{{ route("checkout.updateQty") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({ cartItems: cartItems })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Redirect to the payment page or proceed with checkout process
+                window.location.href = '{{ route("pembayaran.form") }}';
+            } else {
+                // Handle the error
+                alert('Gagal memperbarui qty. Silakan coba lagi.');
+            }
+        });
+    });
 </script>
 @endsection

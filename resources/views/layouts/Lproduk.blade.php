@@ -216,7 +216,9 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
+    @include('layouts.Lnavbar')
+
+    {{-- <nav class="navbar">
         <div class="navbar-content">
             <div class="logo">
                 <img src="{{ asset('images/logoSozaFurniture.png') }}" alt="Logo Soza Furniture">
@@ -233,15 +235,16 @@
                 <a href="{{ url('/troli') }}">Troli</a>
             </div>
         </div>
-    </nav>
+    </nav> --}}
     
     <div class="container">
         @yield('content')
     </div>
+
+    @include('layouts.Lfooter')
+
     
-    <footer class="footer">
-        <p>&copy; 2024 Soza Furniture. All rights reserved.</p>
-    </footer>
+    
     
     <script>
         function toggleMenu() {

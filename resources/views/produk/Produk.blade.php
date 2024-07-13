@@ -3,7 +3,7 @@
 @section('title', 'Soza Furniture - Produk')
 
 @section('content')
-<div class="hero-section">
+<div class="hero-section mt-2">
     <h1>Temukan Produk Terbaik Kami</h1>
     <div class="search-container">
         <form action="{{ route('produk.index') }}" method="GET">
