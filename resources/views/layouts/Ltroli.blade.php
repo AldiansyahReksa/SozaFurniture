@@ -20,49 +20,6 @@
             color: var(--primary-color);
         }
         
-        .navbar {
-            background-color: var(--primary-color);
-            padding: 1em;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .navbar-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .logo {
-            height: 40px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo img {
-            height: 100%;
-            margin-right: 1em;
-        }
-        
-        .nav-links {
-            display: flex;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            margin-left: 2em;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
         
         .container {
             max-width: 1200px;
@@ -70,96 +27,19 @@
             padding: 0 2em;
         }
         
-        .footer {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            text-align: center;
-            padding: 2em 0;
-            margin-top: 4em;
-        }
         
-        /* Media Query for Responsive Navbar */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 60px; /* Adjust according to your navbar height */
-                left: 0;
-                width: 100%;
-                background-color: var(--primary-color);
-                padding: 1em;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .nav-links.open {
-                display: flex;
-            }
-            
-            .nav-links a {
-                margin-left: 0;
-                margin-bottom: 1em;
-                width: 100%;
-                text-align: center;
-            }
-        }
-        
-        .menu-icon {
-            display: none;
-            cursor: pointer;
-        }
-        
-        .menu-icon div {
-            width: 25px;
-            height: 3px;
-            background-color: var(--secondary-color);
-            margin: 5px;
-            transition: transform 0.3s ease;
-        }
-        
-        .menu-icon.open div {
-            background-color: var(--accent-color);
-        }
-        
-        @media (max-width: 768px) {
-            .menu-icon {
-                display: block;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-        }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-content">
-            <div class="logo">
-                <img src="{{ asset('images/logoSozaFurniture.png') }}" alt="Logo Soza Furniture">
-            </div>
-            <div class="menu-icon" onclick="toggleMenu()">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div class="nav-links" id="navLinks">
-                <a href="{{ url('/') }}">Beranda</a>
-                <a href="{{ url('/ulasan') }}">Ulasan</a>
-                <a href="{{ route('produk.index') }}">Produk</a>
-                <a href="{{ route('troli.index') }}">Troli</a>
-            </div>
-        </div>
-    </nav>
+    @include('layouts.Lnavbar')
+
+
     
     <div class="container">
         @yield('content')
     </div>
-    
-    <footer class="footer">
-        <p>&copy; 2024 Soza Furniture. All rights reserved.</p>
-    </footer>
+
+    @include('layouts.Lfooter')
     
     <script>
         function toggleMenu() {
