@@ -29,8 +29,6 @@
         }
         
         
-<<<<<<< HEAD
-=======
         /* Media Query for Responsive Navbar */
         @media (max-width: 768px) {
             .nav-links {
@@ -141,7 +139,6 @@
         color: darkred;
     }
 
->>>>>>> 0f30916405829a96aeb6bb33257f1f6efa3ad3f2
     </style>
 </head>
 <body>

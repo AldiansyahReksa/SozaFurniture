@@ -18,6 +18,7 @@
         background-color: var(--secondary-color);
         border-radius: 10px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 37%;
     }
 
     h1 {
@@ -155,7 +156,7 @@
             </tr>
         </tbody>
     </table>
-    <button onclick="window.location.href='{{ url('/') }}'">Kembali</button>
+    <button onclick="window.location.href='{{ url('/produk') }}'">Kembali</button>
     <button onclick="checkout()">Check out</button>
 </div>
 

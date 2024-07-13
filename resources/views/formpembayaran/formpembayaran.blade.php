@@ -24,7 +24,7 @@
             <input type="text" id="alamat" name="alamat" placeholder="cth : Kp. Babakan Cijeruk RT 02 RW 13" required>
         </div>
         <div class="button-group">
-            <button type="button" class="back-button" onclick="window.location.href='{{ url('/') }}'">Kembali</button>
+            <button type="button" class="back-button" onclick="window.location.href='{{ url('/produk') }}'">Kembali</button>
             <button type="submit" class="next-button">Selanjutnya</button>
         </div>
     </form>

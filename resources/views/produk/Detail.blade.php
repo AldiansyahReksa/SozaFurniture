@@ -3,12 +3,28 @@
 @section('title', 'Detail Produk - ' . $product->product_name)
 
 @section('content')
+<head>
+    {{-- <link rel="stylesheet" href="{{ asset('css/toast.css') }}"> --}}
+</head>
 <style>
     :root {
         --primary-color: #2c3e50;
         --secondary-color: #ecf0f1;
         --accent-color: #e74c3c;
     }
+
+    .success-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    display: none;
+}
 
     body {
         font-family: 'Poppins', sans-serif;
@@ -60,7 +76,7 @@
         display: flex;
         flex-direction: row;
         gap: 2em;
-        padding-bottom: 16%;
+        padding-bottom: 13%;
         /* margin-top:7%; */
         padding-top: 7%;
     }
@@ -111,6 +127,24 @@
 </style>
 
 <div class="product-detail">
+    @if(session('success'))
+    <!-- Success Message Section -->
+    <div class="success-container">
+        <p>{{ session('success') }}</p>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show toast notification
+            var successContainer = document.querySelector('.success-container');
+            if (successContainer) {
+                successContainer.style.display = 'block';
+                setTimeout(function() {
+                    successContainer.style.display = 'none';
+                }, 3000); // 3000 milliseconds = 3 seconds
+            }
+        });
+    </script>
+    @endif
     <div class="product-info">
         <a href="{{ url('/produk') }}">
             <button>Kembali</button>
@@ -136,4 +170,5 @@
         <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->product_name }}">
     </div>
 </div>
+
 @endsection

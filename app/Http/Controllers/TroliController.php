@@ -13,7 +13,7 @@ class TroliController extends Controller
     {
         // Misalnya, mengambil semua produk dari model Product
         $carts = Cart::all();
-    
+        // dd($carts);
         return view('troli.troli', ['carts' => $carts]);
     }
     
