@@ -101,6 +101,22 @@
     .troli-container button:hover {
         background-color: #34495e;
     }
+
+    @media (max-width: 768px) {
+        .troli-table th, .troli-table td {
+            padding: 0.5em;
+            font-size: 0.9em;
+        }
+
+        .troli-table img {
+            max-width: 60px;
+        }
+
+        .troli-container button {
+            width: 100%;
+            margin-bottom: 1em;
+        }
+    }
 </style>
 
 <!-- Include FontAwesome -->
@@ -161,13 +177,6 @@
 </div>
 
 <script>
-    function toggleSelectAll(source) {
-        const checkboxes = document.querySelectorAll('.troli-table tbody input[type="checkbox"]');
-        for (const checkbox of checkboxes) {
-            checkbox.checked = source.checked;
-        }
-    }
-
     function checkout() {
         window.location.href = "{{ route('pembayaran.form') }}";
     }
@@ -213,7 +222,7 @@
     }
 
     document.getElementById('checkout-button').addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent default form submission
+        event.preventDefault();
 
         const cartItems = [];
         document.querySelectorAll('.qty-input').forEach(input => {
@@ -234,10 +243,8 @@
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Redirect to the payment page or proceed with checkout process
                 window.location.href = '{{ route("pembayaran.form") }}';
             } else {
-                // Handle the error
                 alert('Gagal memperbarui qty. Silakan coba lagi.');
             }
         });
