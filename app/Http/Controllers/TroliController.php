@@ -53,4 +53,19 @@ class TroliController extends Controller
 
         return redirect()->back()->with('success', 'Produk berhasil ditambahkan ke troli.');
     }
+
+        public function updateQty(Request $request)
+    {
+        $cartItems = $request->input('cartItems');
+
+        foreach ($cartItems as $item) {
+            $cart = Cart::find($item['id']);
+            if ($cart) {
+                $cart->qty = $item['qty'];
+                $cart->save();
+            }
+        }
+
+        return response()->json(['success' => true]);
+}
 }

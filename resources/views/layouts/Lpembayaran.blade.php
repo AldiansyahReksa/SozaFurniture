@@ -239,6 +239,7 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        text-decoration: none;
         transition: background-color 0.3s ease;
     }
 

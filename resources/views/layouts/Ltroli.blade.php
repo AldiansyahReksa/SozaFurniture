@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Soza Furniture')</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -174,6 +175,18 @@
     .action-column {
         width: 80px; /* Adjust the width as needed */
         text-align: center;
+    }
+
+    .delete-btn {
+        background: none;
+        border: none;
+        color: red;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .delete-btn:hover {
+        color: darkred;
     }
 
     </style>

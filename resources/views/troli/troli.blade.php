@@ -38,7 +38,9 @@
                         <span class="total">{{ $total }}</span>
                     </td>
                     <td class="action-column">
-                        <button class="delete-btn">Hapus</button>
+                        <button class="delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </td>
                 </tr>
             @endforeach
@@ -51,11 +53,9 @@
             </tr>
         </tbody>
     </table>
-    <a href="">
+    <a href="{{ route('pembayaran.form') }}" id="checkout-button">
         <button>Checkout</button>
     </a>
-    <button onclick="window.location.href='{{ url('/') }}'">Kembali</button>
-    <button onclick="checkout()">Check out</button>
 </div>
 
 <script>
@@ -109,5 +109,36 @@
         });
         document.getElementById('grandTotal').textContent = grandTotal.toFixed(2);
     }
+
+    document.getElementById('checkout-button').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const cartItems = [];
+        document.querySelectorAll('.qty-input').forEach(input => {
+            const id = input.closest('tr').dataset.id;
+            const qty = parseInt(input.value);
+
+            cartItems.push({ id: id, qty: qty });
+        });
+
+        fetch('{{ route("checkout.updateQty") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({ cartItems: cartItems })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Redirect to the payment page or proceed with checkout process
+                window.location.href = '{{ route("pembayaran.form") }}';
+            } else {
+                // Handle the error
+                alert('Gagal memperbarui qty. Silakan coba lagi.');
+            }
+        });
+    });
 </script>
 @endsection
