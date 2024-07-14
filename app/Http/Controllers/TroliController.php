@@ -42,11 +42,19 @@ class TroliController extends Controller
 
     public function tambahKeTroli(Request $request, $id)
     {
-        $product = Product::findOrFail($id);
-        $cart = new Cart();
-        $cart->product_id = $product->id;
-        $cart->qty = 1;
-        $cart->save();
+        // Cek apakah produk sudah ada di troli
+        $cartItem = Cart::where('product_id', $id)->first();
+
+        if ($cartItem) {
+            
+            $cartItem->increment('qty'); 
+        } else {
+            
+            Cart::create([
+                'product_id' => $id,
+                'qty' => 1,
+            ]);
+        }
 
         return redirect()->back()->with('success', 'Produk berhasil ditambahkan ke troli.');
     }
