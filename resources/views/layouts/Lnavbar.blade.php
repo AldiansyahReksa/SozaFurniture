@@ -113,10 +113,10 @@
         <div></div>
         <div></div>
     </div>
-    <div class="nav-links" id="navLinks">
-        <a href="{{ url('/') }}">Beranda</a>
-        <a href="{{ url('/ulasan') }}">Ulasan</a>
-        <a href="{{ url('/produk') }}">Produk</a>
-        <a href="{{ url('/troli') }}">Troli</a>
-    </div>
+    @if (!Request::is('/'))
+            <a href="{{ url('/') }}">Beranda</a>
+            <a href="{{ url('/ulasan') }}">Ulasan</a>
+            <a href="{{ url('/produk') }}">Produk</a>
+            <a href="{{ url('/troli') }}">Troli</a>
+        @endif
 </nav>
