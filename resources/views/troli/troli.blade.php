@@ -189,81 +189,78 @@
         </table>
     </div>
     <button onclick="window.location.href='{{ url('/produk') }}'">Kembali</button>
-    <button onclick="checkout()">Check out</button>
+    <button id="checkout-button">Check out</button>
 </div>
 
 <script>
-    function checkout() {
-        window.location.href = "{{ route('pembayaran.form') }}";
-    }
-
     document.querySelectorAll('.qty-input').forEach(input => {
-        input.addEventListener('input', function() {
-            const price = parseFloat(this.dataset.price);
-            const qty = parseInt(this.value);
-            const total = price * qty;
+    input.addEventListener('input', function() {
+        const price = parseFloat(this.dataset.price);
+        const qty = parseInt(this.value);
+        const total = price * qty;
 
-            this.closest('tr').querySelector('.total').textContent = total.toFixed(2);
-            updateGrandTotal();
-        });
+        this.closest('tr').querySelector('.total').textContent = total.toFixed(2);
+        updateGrandTotal();
     });
+});
 
-    document.querySelectorAll('.delete-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const row = this.closest('tr');
-            const id = row.dataset.id;
+document.querySelectorAll('.delete-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const row = this.closest('tr');
+        const id = row.dataset.id;
 
-            fetch(`/troli/delete/${id}`, {
-                method: 'DELETE',
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    row.remove();
-                    updateGrandTotal();
-                }
-            });
-        });
-    });
-
-    function updateGrandTotal() {
-        let grandTotal = 0;
-        document.querySelectorAll('.total').forEach(total => {
-            grandTotal += parseFloat(total.textContent);
-        });
-        document.getElementById('grandTotal').textContent = grandTotal.toFixed(2);
-    }
-
-    document.getElementById('checkout-button').addEventListener('click', function(event) {
-        event.preventDefault();
-
-        const cartItems = [];
-        document.querySelectorAll('.qty-input').forEach(input => {
-            const id = input.closest('tr').dataset.id;
-            const qty = parseInt(input.value);
-
-            cartItems.push({ id: id, qty: qty });
-        });
-
-        fetch('{{ route("checkout.updateQty") }}', {
-            method: 'POST',
+        fetch(`/troli/delete/${id}`, {
+            method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify({ cartItems: cartItems })
+            }
         })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                window.location.href = '{{ route("pembayaran.form") }}';
-            } else {
-                alert('Gagal memperbarui qty. Silakan coba lagi.');
+                row.remove();
+                updateGrandTotal();
             }
         });
     });
+});
+
+function updateGrandTotal() {
+    let grandTotal = 0;
+    document.querySelectorAll('.total').forEach(total => {
+        grandTotal += parseFloat(total.textContent);
+    });
+    document.getElementById('grandTotal').textContent = grandTotal.toFixed(2);
+}
+
+document.getElementById('checkout-button').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    const cartItems = [];
+    document.querySelectorAll('.qty-input').forEach(input => {
+        const id = input.closest('tr').dataset.id;
+        const qty = parseInt(input.value);
+
+        cartItems.push({ id: id, qty: qty });
+    });
+
+    fetch('{{ route("checkout.updateQty") }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify({ cartItems: cartItems })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.href = '{{ route("pembayaran.form") }}';
+        } else {
+            alert('Gagal memperbarui qty. Silakan coba lagi.');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+});
 </script>
 @endsection

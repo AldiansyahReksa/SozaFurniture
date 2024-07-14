@@ -22,7 +22,7 @@ Route::get('/konfirmasi-pembayaran', [PembayaranController::class, 'indexKonfirm
 Route::post('/pembayaran/snap-token', [PembayaranController::class, 'snapToken'])->name('pembayaran.snap.token');
 
 Route::post('/snap-token', [PembayaranController::class, 'snapToken'])->name('pembayaran.snap.token');
-Route::post('/troli/update-qty', [CheckoutController::class, 'updateQty'])->name('checkout.updateQty');
+Route::post('/troli/update-qty', [TroliController::class, 'updateQty'])->name('checkout.updateQty');
 Route::get('/checkout/payment', [CheckoutController::class, 'paymentPage'])->name('checkout.payment');
 Route::post('/orders', [OrderController::class, 'buatOrder'])->name('orders.store');
 Route::get('/order/success/{order}', [OrderController::class, 'success'])->name('order.success');
