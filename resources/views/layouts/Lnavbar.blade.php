@@ -22,11 +22,14 @@
         height: 60px;
         display: flex;
         align-items: center;
+        color: white;
+        font-family: "sans-serif";
+        font-size: 24px;
     }
 
     .logo img {
-        height: 300%;
-        margin-right: 1em;
+        height: 100%;
+        margin-left: 1em;
     }
 
     .nav-links {
@@ -102,7 +105,8 @@
 
 <nav class="navbar">
     <div class="logo">
-        <img src="{{ asset('images/logoSozaFurniture.png') }}" alt="Logo Soza Furniture">
+        <img src="{{ asset('images/logosoza.png') }}" alt="Logo Soza Furniture">
+        Soza Furniture
     </div>
     <div class="menu-icon" onclick="toggleMenu()">
         <div></div>

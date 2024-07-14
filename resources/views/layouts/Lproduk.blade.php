@@ -37,16 +37,16 @@
             margin: 0 auto;
         }
         
-        .logo {
-            height: 40px; /* Tinggi navbar */
-            display: flex; /* Membuat logo menjadi flex container */
-            align-items: center; /* Posisikan logo secara vertikal di tengah navbar */
+        /* .logo {
+            height: 40px;
+            display: flex; 
+            align-items: center; 
         }
         
         .logo img {
-            height: 100%; /* Ukuran gambar logo */
-            margin-right: 1em; /* Margin kanan untuk memberikan ruang dari tepi navbar */
-        }
+            height: 100%; 
+            margin-right: 1em; 
+        } */
         
         .nav-links {
             display: flex;
